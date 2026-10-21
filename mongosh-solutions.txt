@@ -19,3 +19,9 @@ document has a non-empty “title” field.
 
 ------------------
 
+## (2): Create an implicit collection by inserting data directly into a new collection named
+“authors”.
+----- (2) solution -----
+db.authors.insertOne({name: "Author1", nationality: "British"});
+
+------------------
