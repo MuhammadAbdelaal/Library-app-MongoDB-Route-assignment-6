@@ -3,5 +3,8 @@ import { Router } from "express";
 
 export const collectionRouter = Router();
 
-// => POST "/books/collection"
+// => POST "/collection/books"
 collectionRouter.post("/books", collectionController.createBooksCollection);
+
+// => POST "/collection/authors"
+collectionRouter.post("/authors", collectionController.createAuthorsCollection);

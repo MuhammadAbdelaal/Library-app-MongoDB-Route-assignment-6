@@ -20,3 +20,11 @@ export async function createBooksCollection() {
     },
   });
 }
+
+// create implicit authors collection
+export async function createAuthorsCollection(name, nationality) {
+  return await db.collection("authors").insertOne({
+    name,
+    nationality,
+  });
+}

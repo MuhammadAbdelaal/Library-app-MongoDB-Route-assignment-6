@@ -6,7 +6,7 @@ const PORT = 3000;
 
 app.use(express.json()); // parse request body
 
-app.use("/collection", collectionRouter);
+app.use("/collection", collectionRouter); // collection router
 
 // global error middleware
 app.use((error, req, res, next) => {
