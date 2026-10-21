@@ -22,9 +22,9 @@ export async function createBooksCollection() {
 }
 
 // create implicit authors collection
-export async function createAuthorsCollection(name, nationality) {
+export async function createAuthorsCollection(author) {
   return await db.collection("authors").insertOne({
-    name,
-    nationality,
+    name: author.name,
+    nationality: author.nationality,
   });
 }

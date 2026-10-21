@@ -7,6 +7,6 @@ export async function createBooksCollection() {
 }
 
 // create 'authors' collection
-export async function createAuthorsCollection(name, nationality) {
-  return await collectionRepository.createAuthorsCollection(name, nationality);
+export async function createAuthorsCollection(author) {
+  return await collectionRepository.createAuthorsCollection(author);
 }
