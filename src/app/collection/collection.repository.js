@@ -1,0 +1,22 @@
+import { db } from "../../common/db/connection.js";
+
+// Create an explicit collection named “books”
+//  with a validation rule to ensure that each
+// document has a non-empty “title” field.
+export async function createBooksCollection() {
+  return await db.createCollection("books", {
+    validator: {
+      $jsonSchema: {
+        bsonType: "object",
+        required: ["title"],
+        properties: {
+          title: {
+            bsonType: "string",
+            minLength: 1,
+            description: "title is required field",
+          },
+        },
+      },
+    },
+  });
+}
