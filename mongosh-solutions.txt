@@ -37,3 +37,9 @@ db.createCollection("logs", {capped: true, size: 1048576});
 db.books.createIndex({title: 1});
 
 ------------------
+
+## (5): Insert one document into the books collection.
+----- (5) solution -----
+db.books.insertOne({title: "Book1", author: "Ali", year: 1937, genres: ["Fantasy", "Adventure"]});
+
+------------------

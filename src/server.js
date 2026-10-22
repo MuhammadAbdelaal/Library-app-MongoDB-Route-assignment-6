@@ -1,5 +1,6 @@
 import express from "express";
 import { collectionRouter } from "./app/collection/collection.route.js";
+import { bookRouter } from "./app/book/book.route.js";
 
 const app = express();
 const PORT = 3000;
@@ -7,6 +8,7 @@ const PORT = 3000;
 app.use(express.json()); // parse request body
 
 app.use("/collection", collectionRouter); // collection router
+app.use("/books", bookRouter); // book router
 
 // global error middleware
 app.use((error, req, res, next) => {
