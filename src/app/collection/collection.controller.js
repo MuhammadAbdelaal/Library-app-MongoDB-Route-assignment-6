@@ -5,8 +5,9 @@ export async function createBooksCollection(req, res, next) {
   try {
     const collectionName = await collectionService.createBooksCollection();
     return res.status(201).json({
-      message: `Collection (${collectionName}) created successfully`,
+      message: `Books collection created successfully`,
       success: true,
+      data: collectionName,
     });
   } catch (error) {
     next(error);
@@ -21,7 +22,25 @@ export async function createAuthorsCollection(req, res, next) {
       name,
       nationality,
     });
-    return res.status(201).json({ message: result, success: true });
+    return res.status(201).json({
+      message: "Authors collection created successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+// create 'logs' collection
+export async function createLogsCollection(req, res, next) {
+  try {
+    const collectionName = await collectionService.createLogsCollection();
+    return res.status(201).json({
+      message: "Collection created successfully",
+      success: true,
+      data: collectionName,
+    });
   } catch (error) {
     next(error);
   }

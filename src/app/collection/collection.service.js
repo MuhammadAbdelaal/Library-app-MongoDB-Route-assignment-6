@@ -10,3 +10,9 @@ export async function createBooksCollection() {
 export async function createAuthorsCollection(author) {
   return await collectionRepository.createAuthorsCollection(author);
 }
+
+// create 'logs' collection
+export async function createLogsCollection() {
+  const { collectionName } = await collectionRepository.createLogsCollection();
+  return collectionName;
+}

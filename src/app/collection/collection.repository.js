@@ -28,3 +28,11 @@ export async function createAuthorsCollection(author) {
     nationality: author.nationality,
   });
 }
+
+// create capped collection named “logs” with a size limit of 1MB.
+export async function createLogsCollection() {
+  return await db.createCollection("logs", {
+    capped: true,
+    size: 1048576,
+  });
+}

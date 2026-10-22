@@ -25,3 +25,9 @@ document has a non-empty “title” field.
 db.authors.insertOne({name: "Author1", nationality: "British"});
 
 ------------------
+
+## (3): Create a capped collection named “logs” with a size limit of 1MB.
+----- (3) solution -----
+db.createCollection("logs", {capped: true, size: 1048576});
+
+------------------
