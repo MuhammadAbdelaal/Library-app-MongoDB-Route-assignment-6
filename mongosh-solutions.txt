@@ -31,3 +31,9 @@ db.authors.insertOne({name: "Author1", nationality: "British"});
 db.createCollection("logs", {capped: true, size: 1048576});
 
 ------------------
+
+## (4): Create an index on the books collection for the title field.
+----- (4) solution -----
+db.books.createIndex({title: 1});
+
+------------------

@@ -14,3 +14,9 @@ collectionRouter.post(
   "/logs/capped",
   collectionController.createLogsCollection,
 );
+
+// => POST "/collection/books/index"
+collectionRouter.post(
+  "/books/index",
+  collectionController.createIndexOnBooksCollection,
+);

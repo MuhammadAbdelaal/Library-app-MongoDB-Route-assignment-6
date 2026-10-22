@@ -45,3 +45,17 @@ export async function createLogsCollection(req, res, next) {
     next(error);
   }
 }
+
+// create index on books collection
+export async function createIndexOnBooksCollection(req, res, next) {
+  try {
+    const result = await collectionService.createIndexOnBooksCollection();
+    return res.status(201).json({
+      message: "Index created successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

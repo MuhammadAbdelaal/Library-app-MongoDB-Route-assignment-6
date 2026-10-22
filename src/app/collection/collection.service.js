@@ -16,3 +16,8 @@ export async function createLogsCollection() {
   const { collectionName } = await collectionRepository.createLogsCollection();
   return collectionName;
 }
+
+// create index on the books collection for the title field.
+export async function createIndexOnBooksCollection() {
+  return await collectionRepository.createIndexOnBooksCollection();
+}

@@ -36,3 +36,8 @@ export async function createLogsCollection() {
     size: 1048576,
   });
 }
+
+// create index on the books collection for the title field.
+export async function createIndexOnBooksCollection() {
+  return await db.collection("books").createIndex({ title: 1 });
+}
