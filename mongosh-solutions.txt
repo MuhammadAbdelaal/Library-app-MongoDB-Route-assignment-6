@@ -51,3 +51,9 @@ db.books.insertMany([
     {title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, genres: ["Classic", "Fiction"]},
     {title: "Brave New World", author: "Aldous Huxley", year: 2006, genres: ["Dystopian", "Science Fiction"]}
     ]);
+
+## (7): Insert a new log into the logs collection.
+----- (7) solution -----
+db.logs.insertOne({ book_id: ObjectId("6adaa5942f7eddc0545da770"), action: "borrowed" });
+
+------------------
