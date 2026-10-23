@@ -57,3 +57,9 @@ db.books.insertMany([
 db.logs.insertOne({ book_id: ObjectId("6adaa5942f7eddc0545da770"), action: "borrowed" });
 
 ------------------
+
+## (8): Update the book with title “Future” change the year to be 2022.
+----- (8) solution -----
+db.books.updateOne({title: "Future"},{$set: {year: 2022}});
+
+------------------

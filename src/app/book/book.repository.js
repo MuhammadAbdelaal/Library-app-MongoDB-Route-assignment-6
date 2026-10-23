@@ -15,3 +15,10 @@ export async function insertMultipleIntoBooks(books) {
 export async function getBookById(id) {
   return await db.collection("books").findOne({ _id: new ObjectId(id) });
 }
+
+// update book with a specific title
+export async function updateBook(bookTitle, bookValues) {
+  return await db
+    .collection("books")
+    .updateOne({ title: bookTitle }, { $set: { ...bookValues } });
+}
