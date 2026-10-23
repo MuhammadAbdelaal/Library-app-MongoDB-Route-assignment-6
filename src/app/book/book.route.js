@@ -5,3 +5,6 @@ export const bookRouter = Router();
 
 // => POST "/books"
 bookRouter.post("/", bookController.insertOneDocumentIntoBooks);
+
+// => POST "/books/batch"
+bookRouter.post("/batch", bookController.insertMultipleDocumentsIntoBooks);

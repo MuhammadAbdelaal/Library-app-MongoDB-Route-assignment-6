@@ -19,3 +19,18 @@ export async function insertOneDocumentIntoBooks(req, res, next) {
     next(error);
   }
 }
+
+// insert multiple documents into books
+export async function insertMultipleDocumentsIntoBooks(req, res, next) {
+  const books = req.body || {};
+  try {
+    const result = await bookService.insertMultipleIntoBooks(books);
+    return res.status(201).json({
+      message: "Book records inserted successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

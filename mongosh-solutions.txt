@@ -43,3 +43,11 @@ db.books.createIndex({title: 1});
 db.books.insertOne({title: "Book1", author: "Ali", year: 1937, genres: ["Fantasy", "Adventure"]});
 
 ------------------
+
+## (6): Insert multiple documents into the books collection with at least three records.
+----- (6) solution -----
+db.books.insertMany([
+    {title: "Future", author: "George Orwell", year: 2020, genres: ["Science Fiction"]},
+    {title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, genres: ["Classic", "Fiction"]},
+    {title: "Brave New World", author: "Aldous Huxley", year: 2006, genres: ["Dystopian", "Science Fiction"]}
+    ]);

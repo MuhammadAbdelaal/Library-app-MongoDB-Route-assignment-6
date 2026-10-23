@@ -4,3 +4,8 @@ import { db } from "../../common/db/connection.js";
 export async function insertOneDocumentIntoBooks(book) {
   return await db.collection("books").insertOne({ ...book });
 }
+
+// insert multiple documents into the books collection
+export async function insertMultipleIntoBooks(books) {
+  return await db.collection("books").insertMany([...books]);
+}
