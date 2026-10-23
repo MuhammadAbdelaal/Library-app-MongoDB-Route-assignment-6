@@ -11,3 +11,6 @@ bookRouter.post("/batch", bookController.insertMultipleDocumentsIntoBooks);
 
 // => Patch "/books/:title"
 bookRouter.patch("/:title", bookController.updateBook);
+
+// => Get "/books/title/
+bookRouter.get("/title", bookController.findBookByTitle);

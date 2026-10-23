@@ -22,3 +22,8 @@ export async function updateBook(bookTitle, bookValues) {
     .collection("books")
     .updateOne({ title: bookTitle }, { $set: { ...bookValues } });
 }
+
+// find a book by title
+export async function findBookByTitle(title) {
+  return await db.collection("books").findOne({ title });
+}

@@ -63,3 +63,9 @@ db.logs.insertOne({ book_id: ObjectId("6adaa5942f7eddc0545da770"), action: "borr
 db.books.updateOne({title: "Future"},{$set: {year: 2022}});
 
 ------------------
+
+## (9): Find with the title “Brave New World”.
+----- (9) solution -----
+db.books.findOne({title: "Brave New World"});
+
+------------------

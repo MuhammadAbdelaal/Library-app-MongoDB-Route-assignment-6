@@ -66,3 +66,25 @@ export async function updateBook(req, res, next) {
     next(error);
   }
 }
+
+// find a book by title
+export async function findBookByTitle(req, res, next) {
+  const { title } = req.query;
+  // if no title is provided, return an error
+  if (!title) {
+    const error = new Error("Please provide a title!");
+    error.statusCode = 400;
+    return next(error);
+  }
+
+  try {
+    const result = await bookService.findBookByTitle(title);
+    return res.status(200).json({
+      message: "Book found successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

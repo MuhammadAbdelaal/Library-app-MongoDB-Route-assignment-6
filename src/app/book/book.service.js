@@ -14,3 +14,14 @@ export async function insertMultipleIntoBooks(books) {
 export async function updateBook(bookTitle, bookValues) {
   return await bookRepository.updateBook(bookTitle, bookValues);
 }
+
+// find a book by title
+export async function findBookByTitle(title) {
+  const book = await bookRepository.findBookByTitle(title);
+  if (!book) {
+    const error = new Error("Book not found");
+    error.statusCode = 404;
+    throw error;
+  }
+  return book;
+}
