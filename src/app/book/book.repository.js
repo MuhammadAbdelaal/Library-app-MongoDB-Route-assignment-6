@@ -75,3 +75,14 @@ export async function aggregateBooks1() {
     .aggregate([{ $match: { year: { $gt: 2000 } } }, { $sort: { year: -1 } }])
     .toArray();
 }
+
+// aggregate2 for books, after 2000, show selected fields
+export async function aggregateBooks2() {
+  return await db
+    .collection("books")
+    .aggregate([
+      { $match: { year: { $gt: 2000 } } },
+      { $project: { _id: 0, title: 1, author: 1, year: 1 } },
+    ])
+    .toArray();
+}

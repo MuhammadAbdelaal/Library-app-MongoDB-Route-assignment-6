@@ -55,3 +55,8 @@ export async function deleteBooksBeforeYear(year) {
 export async function aggregateBooks1() {
   return await bookRepository.aggregateBooks1();
 }
+
+// aggregate 2 for books, after 2000, show selected fields
+export async function aggregateBooks2() {
+  return await bookRepository.aggregateBooks2();
+}

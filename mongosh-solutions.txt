@@ -104,5 +104,16 @@ db.books.aggregate([
 ]);
 --------------------
 
+## (17): Using aggregation functions, Find all books published after the year 2000. For each
+matching book, show only the title, author, and year fields.
+--------------------
+db.books.aggregate([
+  { $match: { year: { $gt: 2000 } } },
+  { $project: { _id: 0, title: 1, author: 1, year: 1 } }
+]);
+--------------------
+
+
+
 
 
