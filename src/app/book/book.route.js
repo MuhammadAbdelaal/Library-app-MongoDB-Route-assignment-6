@@ -38,3 +38,6 @@ bookRouter.get("/aggregate2", bookController.aggregateBooks2);
 
 // => Get "/books/aggregate3"
 bookRouter.get("/aggregate3", bookController.aggregateBooks3);
+
+// => Get "/books/aggregate4"
+bookRouter.get("/aggregate4", bookController.aggregateBooks4);

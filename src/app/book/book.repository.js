@@ -97,3 +97,30 @@ export async function aggregateBooks3() {
     ])
     .toArray();
 }
+
+// join the books collection with the logs collection
+export async function aggregateBooks4() {
+  return await db
+    .collection("logs")
+    .aggregate([
+      {
+        $lookup: {
+          from: "books",
+          localField: "book_id",
+          foreignField: "_id",
+          as: "book_details",
+        },
+      },
+      { $match: { book_details: { $ne: [] } } },
+      {
+        $project: {
+          _id: 0,
+          action: 1,
+          "book_details.title": 1,
+          "book_details.author": 1,
+          "book_details.year": 1,
+        },
+      },
+    ])
+    .toArray();
+}

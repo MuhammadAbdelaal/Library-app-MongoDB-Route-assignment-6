@@ -65,3 +65,8 @@ export async function aggregateBooks2() {
 export async function aggregateBooks3() {
   return await bookRepository.aggregateBooks3();
 }
+
+// join the books collection with the logs collection
+export async function aggregateBooks4() {
+  return await bookRepository.aggregateBooks4();
+}

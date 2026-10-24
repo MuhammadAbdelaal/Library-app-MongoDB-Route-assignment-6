@@ -279,3 +279,17 @@ export async function aggregateBooks3(req, res, next) {
     next(error);
   }
 }
+
+// aggregate books 4
+export async function aggregateBooks4(req, res, next) {
+  try {
+    const result = await bookService.aggregateBooks4();
+    return res.status(200).json({
+      message: "Books and their logs are as below:",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
