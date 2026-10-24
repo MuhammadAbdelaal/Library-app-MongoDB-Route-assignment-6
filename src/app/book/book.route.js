@@ -29,3 +29,6 @@ bookRouter.get("/year-integer", bookController.findBooksByIntegerYear);
 
 // => Delete "/books/before-year"
 bookRouter.delete("/before-year", bookController.deleteBooksBeforeYear);
+
+// => Get "/books/aggregate1"
+bookRouter.get("/aggregate1", bookController.aggregateBooks1);

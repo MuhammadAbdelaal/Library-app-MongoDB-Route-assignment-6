@@ -50,3 +50,8 @@ export async function findBooksByIntegerYear() {
 export async function deleteBooksBeforeYear(year) {
   return await bookRepository.deleteBooksBeforeYear(year);
 }
+
+// aggregation, filter books published after 2000 sort decs
+export async function aggregateBooks1() {
+  return await bookRepository.aggregateBooks1();
+}

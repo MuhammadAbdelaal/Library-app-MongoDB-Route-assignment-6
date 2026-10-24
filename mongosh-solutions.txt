@@ -88,8 +88,21 @@ db.books.find({ year: { $type: "int" } });
 "Science Fiction"
 --------------------
 db.books.find({genres: {$nin: ["Horror", "Science Fiction"]}});
+--------------------
 
 ## (15): Delete all books published before 2000
+--------------------
 db.books.deleteMany({year: {$lt: 2000}});
+--------------------
+
+## (16): Using aggregation Functions, Filter books published after 2000 and sort them by year
+descending.
+--------------------
+db.books.aggregate([
+    {$match: {year: {$gt: 2000}}},
+    {$sort: {year: -1}}
+]);
+--------------------
+
 
 

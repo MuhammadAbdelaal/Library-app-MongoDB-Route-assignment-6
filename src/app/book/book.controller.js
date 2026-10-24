@@ -237,3 +237,17 @@ export async function deleteBooksBeforeYear(req, res, next) {
     next(error);
   }
 }
+
+// aggregate books 1
+export async function aggregateBooks1(req, res, next) {
+  try {
+    const result = await bookService.aggregateBooks1();
+    return res.status(200).json({
+      message: "Books found successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

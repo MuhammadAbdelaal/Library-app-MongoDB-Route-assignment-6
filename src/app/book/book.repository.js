@@ -67,3 +67,11 @@ export async function findBooksByIntegerYear() {
 export async function deleteBooksBeforeYear(year) {
   return await db.collection("books").deleteMany({ year: { $lt: year } });
 }
+
+// aggregation, filter books published after 2000 sort decs
+export async function aggregateBooks1() {
+  return await db
+    .collection("books")
+    .aggregate([{ $match: { year: { $gt: 2000 } } }, { $sort: { year: -1 } }])
+    .toArray();
+}
