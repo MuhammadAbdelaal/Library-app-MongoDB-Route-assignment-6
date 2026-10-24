@@ -36,11 +36,11 @@ export async function findBooksBetween(year1, year2) {
     .toArray();
 }
 
-// find books where the genre includes a certain value
-export async function findBooksByGenre(genre) {
+// find books where the genre (include or exclude)
+export async function findBooksByGenre(operator, genres) {
   return await db
     .collection("books")
-    .find({ genres: { $in: [genre] } }, { projection: { _id: 0 } })
+    .find({ genres: { [operator]: genres } }, { projection: { _id: 0 } })
     .toArray();
 }
 

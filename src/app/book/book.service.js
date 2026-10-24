@@ -31,9 +31,9 @@ export async function findBooksBetween(year1, year2) {
   return await bookRepository.findBooksBetween(year1, year2);
 }
 
-// find books where the genre includes a certain value
-export async function findBooksByGenre(genre) {
-  return await bookRepository.findBooksByGenre(genre);
+// find books where the genre (include or exclude)
+export async function findBooksByGenre(operator, genres) {
+  return await bookRepository.findBooksByGenre(operator, genres);
 }
 
 // find all books paginated by year

@@ -84,6 +84,11 @@ db.books.find().sort({year: -1}).skip(2).limit(3);
 db.books.find({ year: { $type: "int" } });
 --------------------
 
+## (14): Find all books where the genres field does not include any of the genres "Horror" or
+"Science Fiction"
+--------------------
+db.books.find({genres: {$nin: ["Horror", "Science Fiction"]}});
+
 
 
 

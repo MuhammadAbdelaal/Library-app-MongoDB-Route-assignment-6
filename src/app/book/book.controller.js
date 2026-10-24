@@ -116,28 +116,40 @@ export async function findBooksBetween(req, res, next) {
   }
 }
 
-// find books by genre
+// find books by genre (include or exclude)
 export async function findBooksByGenre(req, res, next) {
-  const genre = req.query.genre;
-  // if no genre is provided, return an error
-  if (!genre) {
-    const error = new Error("Please provide a genre!");
+  const { operator } = req.query;
+  const genres = (req.query.genres || "")
+    .split(",")
+    .map((genre) => genre.trim());
+
+  // if the operator is not valid, return an error
+  if (operator !== "$in" && operator !== "$nin") {
+    const error = new Error(
+      "Please provide a valid operator: ($in) or ($nin)!",
+    );
+    error.statusCode = 400;
+    return next(error);
+  }
+
+  // if no genres are provided, return an error
+  if (!genres[0]) {
+    const error = new Error("Please provide genres!");
     error.statusCode = 400;
     return next(error);
   }
 
   try {
-    const result = await bookService.findBooksByGenre(genre);
+    const books = await bookService.findBooksByGenre(operator, genres);
     return res.status(200).json({
       message: "Books found successfully",
       success: true,
-      data: result,
+      data: books,
     });
   } catch (error) {
     next(error);
   }
 }
-
 // find books paginated by year
 export async function findBooksPaginatedByYear(req, res, next) {
   const sortValue = req.query.sort || "desc"; // default to descending order
