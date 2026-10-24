@@ -23,3 +23,6 @@ bookRouter.get("/genre", bookController.findBooksByGenre);
 
 // => Get "/books/sort-skip-limit
 bookRouter.get("/sort-skip-limit", bookController.findBooksPaginatedByYear);
+
+// => Get "/books/year-integer"
+bookRouter.get("/year-integer", bookController.findBooksByIntegerYear);

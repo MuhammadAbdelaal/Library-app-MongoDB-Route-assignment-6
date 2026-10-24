@@ -73,11 +73,17 @@ db.books.find({year: {$gt: 1990, $lt: 2010}}, { _id: false });
 db.books.find({genres: {$in: ["Science Fiction"]}});
 --------------------
 
-## (12): 12. Skip the first two books, limit the results to the next three, sorted by year in descending
+## (12): Skip the first two books, limit the results to the next three, sorted by year in descending
 order.
 --------------------
 db.books.find().sort({year: -1}).skip(2).limit(3);
 --------------------
+
+## (13): Find books where the year field stored as an integer.
+--------------------
+db.books.find({ year: { $type: "int" } });
+--------------------
+
 
 
 

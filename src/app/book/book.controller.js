@@ -189,3 +189,17 @@ export async function findBooksPaginatedByYear(req, res, next) {
     next(error);
   }
 }
+
+// find books where the year field stored as an integer.
+export async function findBooksByIntegerYear(req, res, next) {
+  try {
+    const result = await bookService.findBooksByIntegerYear();
+    return res.status(200).json({
+      message: "Books found successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

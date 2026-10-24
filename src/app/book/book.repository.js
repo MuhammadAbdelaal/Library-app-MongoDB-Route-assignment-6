@@ -54,3 +54,11 @@ export async function findBooksPaginatedByYear(sort, skip, limit) {
     .limit(limit)
     .toArray();
 }
+
+// find books where the year field stored as an integer.
+export async function findBooksByIntegerYear() {
+  return await db
+    .collection("books")
+    .find({ year: { $type: "int" } })
+    .toArray();
+}

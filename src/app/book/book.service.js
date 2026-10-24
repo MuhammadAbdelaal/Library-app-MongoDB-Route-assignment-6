@@ -40,3 +40,8 @@ export async function findBooksByGenre(genre) {
 export async function findBooksPaginatedByYear(sort, skip, limit) {
   return await bookRepository.findBooksPaginatedByYear(sort, skip, limit);
 }
+
+// find books where the year field stored as an integer.
+export async function findBooksByIntegerYear() {
+  return await bookRepository.findBooksByIntegerYear();
+}
