@@ -62,3 +62,8 @@ export async function findBooksByIntegerYear() {
     .find({ year: { $type: "int" } })
     .toArray();
 }
+
+// delete all books published before a year
+export async function deleteBooksBeforeYear(year) {
+  return await db.collection("books").deleteMany({ year: { $lt: year } });
+}

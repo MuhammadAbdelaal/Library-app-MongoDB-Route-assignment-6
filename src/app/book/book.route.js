@@ -26,3 +26,6 @@ bookRouter.get("/sort-skip-limit", bookController.findBooksPaginatedByYear);
 
 // => Get "/books/year-integer"
 bookRouter.get("/year-integer", bookController.findBooksByIntegerYear);
+
+// => Delete "/books/before-year"
+bookRouter.delete("/before-year", bookController.deleteBooksBeforeYear);

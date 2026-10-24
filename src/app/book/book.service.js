@@ -45,3 +45,8 @@ export async function findBooksPaginatedByYear(sort, skip, limit) {
 export async function findBooksByIntegerYear() {
   return await bookRepository.findBooksByIntegerYear();
 }
+
+// delete all books published before a year
+export async function deleteBooksBeforeYear(year) {
+  return await bookRepository.deleteBooksBeforeYear(year);
+}

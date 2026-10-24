@@ -215,3 +215,25 @@ export async function findBooksByIntegerYear(req, res, next) {
     next(error);
   }
 }
+
+// delete all books published before a year
+export async function deleteBooksBeforeYear(req, res, next) {
+  const year = Number(req.query.year);
+  // if no year is provided, return an error
+  if (!year) {
+    const error = new Error("Please provide a year!");
+    error.statusCode = 400;
+    return next(error);
+  }
+
+  try {
+    const result = await bookService.deleteBooksBeforeYear(year);
+    return res.status(200).json({
+      message: "Books deleted successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

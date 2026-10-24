@@ -89,6 +89,7 @@ db.books.find({ year: { $type: "int" } });
 --------------------
 db.books.find({genres: {$nin: ["Horror", "Science Fiction"]}});
 
-
+## (15): Delete all books published before 2000
+db.books.deleteMany({year: {$lt: 2000}});
 
 
