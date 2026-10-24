@@ -137,3 +137,55 @@ export async function findBooksByGenre(req, res, next) {
     next(error);
   }
 }
+
+// find books paginated by year
+export async function findBooksPaginatedByYear(req, res, next) {
+  const sortValue = req.query.sort || "desc"; // default to descending order
+  // check if the inserted sort value is not valid
+  if (sortValue !== "asc" && sortValue !== "desc") {
+    const error = new Error(
+      "Please provide a valid sort value (asc) or (desc)!",
+    );
+    error.statusCode = 400;
+    return next(error);
+  }
+  // convert sort value to a number (-1 for desc, 1 for asc)
+  const sort = sortValue === "asc" ? 1 : -1;
+
+  const { skip: skipValue, limit: limitValue } = req.query;
+
+  // convert skip and limit values to numbers (default to 0 and 10)
+  const skip = Number(skipValue || 0),
+    limit = Number(limitValue || 10);
+
+  // if the number is not integer or not (0-100)
+  if (
+    !Number.isInteger(skip) ||
+    !Number.isInteger(limit) ||
+    skip < 0 ||
+    limit < 1 ||
+    limit > 100
+  ) {
+    const error = new Error(
+      "Please provide valid values for skip (0+) and limit (1-100).",
+    );
+    error.statusCode = 400;
+    return next(error);
+  }
+
+  // if all values are valid, call the service function
+  try {
+    const result = await bookService.findBooksPaginatedByYear(
+      sort,
+      skip,
+      limit,
+    );
+    return res.status(200).json({
+      message: "Books found successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}

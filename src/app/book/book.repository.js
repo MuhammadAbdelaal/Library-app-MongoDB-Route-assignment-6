@@ -43,3 +43,14 @@ export async function findBooksByGenre(genre) {
     .find({ genres: { $in: [genre] } }, { projection: { _id: 0 } })
     .toArray();
 }
+
+// find all books paginated by year
+export async function findBooksPaginatedByYear(sort, skip, limit) {
+  return await db
+    .collection("books")
+    .find()
+    .sort({ year: sort })
+    .skip(skip)
+    .limit(limit)
+    .toArray();
+}

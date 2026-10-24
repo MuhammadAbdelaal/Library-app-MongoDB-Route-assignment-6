@@ -35,3 +35,8 @@ export async function findBooksBetween(year1, year2) {
 export async function findBooksByGenre(genre) {
   return await bookRepository.findBooksByGenre(genre);
 }
+
+// find all books paginated by year
+export async function findBooksPaginatedByYear(sort, skip, limit) {
+  return await bookRepository.findBooksPaginatedByYear(sort, skip, limit);
+}

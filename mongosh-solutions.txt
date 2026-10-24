@@ -73,3 +73,11 @@ db.books.find({year: {$gt: 1990, $lt: 2010}}, { _id: false });
 db.books.find({genres: {$in: ["Science Fiction"]}});
 --------------------
 
+## (12): 12. Skip the first two books, limit the results to the next three, sorted by year in descending
+order.
+--------------------
+db.books.find().sort({year: -1}).skip(2).limit(3);
+--------------------
+
+
+
