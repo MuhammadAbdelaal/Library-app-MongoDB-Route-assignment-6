@@ -14,3 +14,6 @@ bookRouter.patch("/:title", bookController.updateBook);
 
 // => Get "/books/title/
 bookRouter.get("/title", bookController.findBookByTitle);
+
+// => Get "/books/year"
+bookRouter.get("/year", bookController.findBooksBetween);

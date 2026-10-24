@@ -1,6 +1,6 @@
 ## (1): Create an explicit collection named “books” with a validation rule to ensure that each
 document has a non-empty “title” field. 
------ (1) solution -----
+--------------------
  db.createCollection("books",{
     validator: {
         $jsonSchema: {
@@ -16,56 +16,54 @@ document has a non-empty “title” field.
             }
         }
 });
-
-------------------
+--------------------
 
 ## (2): Create an implicit collection by inserting data directly into a new collection named
 “authors”.
------ (2) solution -----
+--------------------
 db.authors.insertOne({name: "Author1", nationality: "British"});
-
-------------------
+--------------------
 
 ## (3): Create a capped collection named “logs” with a size limit of 1MB.
------ (3) solution -----
+--------------------
 db.createCollection("logs", {capped: true, size: 1048576});
-
-------------------
+--------------------
 
 ## (4): Create an index on the books collection for the title field.
------ (4) solution -----
+--------------------
 db.books.createIndex({title: 1});
-
-------------------
+--------------------
 
 ## (5): Insert one document into the books collection.
------ (5) solution -----
+--------------------
 db.books.insertOne({title: "Book1", author: "Ali", year: 1937, genres: ["Fantasy", "Adventure"]});
-
 ------------------
 
 ## (6): Insert multiple documents into the books collection with at least three records.
------ (6) solution -----
+--------------------
 db.books.insertMany([
     {title: "Future", author: "George Orwell", year: 2020, genres: ["Science Fiction"]},
     {title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960, genres: ["Classic", "Fiction"]},
     {title: "Brave New World", author: "Aldous Huxley", year: 2006, genres: ["Dystopian", "Science Fiction"]}
     ]);
+--------------------
 
 ## (7): Insert a new log into the logs collection.
------ (7) solution -----
+--------------------
 db.logs.insertOne({ book_id: ObjectId("6adaa5942f7eddc0545da770"), action: "borrowed" });
-
 ------------------
 
 ## (8): Update the book with title “Future” change the year to be 2022.
------ (8) solution -----
+---------------------
 db.books.updateOne({title: "Future"},{$set: {year: 2022}});
-
 ------------------
 
 ## (9): Find with the title “Brave New World”.
------ (9) solution -----
+--------------------
 db.books.findOne({title: "Brave New World"});
+--------------------
 
-------------------
+## (10): Find 
+--------------------
+db.books.find({year: {$gt: 1990, $lt: 2010}}, { _id: false });
+--------------------

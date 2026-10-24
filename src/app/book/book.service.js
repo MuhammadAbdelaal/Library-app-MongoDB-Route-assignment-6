@@ -25,3 +25,8 @@ export async function findBookByTitle(title) {
   }
   return book;
 }
+
+// find all books published between two years
+export async function findBooksBetween(year1, year2) {
+  return await bookRepository.findBooksBetween(year1, year2);
+}

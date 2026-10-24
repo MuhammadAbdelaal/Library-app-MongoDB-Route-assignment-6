@@ -27,3 +27,11 @@ export async function updateBook(bookTitle, bookValues) {
 export async function findBookByTitle(title) {
   return await db.collection("books").findOne({ title });
 }
+
+// find all books published between two years
+export async function findBooksBetween(year1, year2) {
+  return await db
+    .collection("books")
+    .find({ year: { $gt: year1, $lt: year2 } }, { projection: { _id: false } })
+    .toArray();
+}

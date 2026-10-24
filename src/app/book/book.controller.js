@@ -88,3 +88,30 @@ export async function findBookByTitle(req, res, next) {
     next(error);
   }
 }
+
+// find books between two years
+export async function findBooksBetween(req, res, next) {
+  const year1 = Number(req.query.from),
+    year2 = Number(req.query.to);
+  // if no from or to is provided, return an error
+  if (
+    !year1 ||
+    !year2 ||
+    !Number.isInteger(year1) ||
+    !Number.isInteger(year2)
+  ) {
+    const error = new Error("Please provide a valid (from) and (to) values!");
+    error.statusCode = 400;
+    return next(error);
+  }
+  try {
+    const result = await bookService.findBooksBetween(year1, year2);
+    return res.status(200).json({
+      message: "Books found successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
