@@ -48,7 +48,7 @@ export async function findBooksByGenre(genre) {
 export async function findBooksPaginatedByYear(sort, skip, limit) {
   return await db
     .collection("books")
-    .find()
+    .find({}, { projection: { _id: 0 } })
     .sort({ year: sort })
     .skip(skip)
     .limit(limit)
