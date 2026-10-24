@@ -35,3 +35,11 @@ export async function findBooksBetween(year1, year2) {
     .find({ year: { $gt: year1, $lt: year2 } }, { projection: { _id: false } })
     .toArray();
 }
+
+// find books where the genre includes a certain value
+export async function findBooksByGenre(genre) {
+  return await db
+    .collection("books")
+    .find({ genres: { $in: [genre] } }, { projection: { _id: 0 } })
+    .toArray();
+}

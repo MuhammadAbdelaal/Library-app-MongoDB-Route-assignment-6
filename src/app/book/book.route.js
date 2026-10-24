@@ -17,3 +17,6 @@ bookRouter.get("/title", bookController.findBookByTitle);
 
 // => Get "/books/year"
 bookRouter.get("/year", bookController.findBooksBetween);
+
+// => Get "/books/genre"
+bookRouter.get("/genre", bookController.findBooksByGenre);

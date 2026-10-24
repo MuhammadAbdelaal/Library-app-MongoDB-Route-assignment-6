@@ -63,7 +63,13 @@ db.books.updateOne({title: "Future"},{$set: {year: 2022}});
 db.books.findOne({title: "Brave New World"});
 --------------------
 
-## (10): Find 
+## (10): Find all books published between 1990 and 2010. 
 --------------------
 db.books.find({year: {$gt: 1990, $lt: 2010}}, { _id: false });
 --------------------
+
+## (11): Find books where the genre includes "Science Fiction"
+--------------------
+db.books.find({genres: {$in: ["Science Fiction"]}});
+--------------------
+

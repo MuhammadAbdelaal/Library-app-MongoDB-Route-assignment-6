@@ -115,3 +115,25 @@ export async function findBooksBetween(req, res, next) {
     next(error);
   }
 }
+
+// find books by genre
+export async function findBooksByGenre(req, res, next) {
+  const genre = req.query.genre;
+  // if no genre is provided, return an error
+  if (!genre) {
+    const error = new Error("Please provide a genre!");
+    error.statusCode = 400;
+    return next(error);
+  }
+
+  try {
+    const result = await bookService.findBooksByGenre(genre);
+    return res.status(200).json({
+      message: "Books found successfully",
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
