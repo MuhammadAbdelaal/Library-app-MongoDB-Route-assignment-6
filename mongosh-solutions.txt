@@ -111,7 +111,15 @@ db.books.aggregate([
   { $match: { year: { $gt: 2000 } } },
   { $project: { _id: 0, title: 1, author: 1, year: 1 } }
 ]);
+
+## (18): Using aggregation functions,break an array of genres into separate documents.
 --------------------
+db.books.aggregate([
+    { $unwind: "$genres" },
+    { $project: { _id: 0, title: 1, genres: 1 } }
+]);
+--------------------
+
 
 
 

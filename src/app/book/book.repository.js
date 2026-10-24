@@ -86,3 +86,14 @@ export async function aggregateBooks2() {
     ])
     .toArray();
 }
+
+// break an array of genres into separate documents
+export async function aggregateBooks3() {
+  return await db
+    .collection("books")
+    .aggregate([
+      { $unwind: "$genres" },
+      { $project: { _id: 0, title: 1, genres: 1 } },
+    ])
+    .toArray();
+}

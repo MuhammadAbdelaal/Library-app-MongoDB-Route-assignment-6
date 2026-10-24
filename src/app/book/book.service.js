@@ -60,3 +60,8 @@ export async function aggregateBooks1() {
 export async function aggregateBooks2() {
   return await bookRepository.aggregateBooks2();
 }
+
+// break an array of genres into separate documents ( aggregate3)
+export async function aggregateBooks3() {
+  return await bookRepository.aggregateBooks3();
+}
